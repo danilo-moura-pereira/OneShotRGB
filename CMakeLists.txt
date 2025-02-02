@@ -19,26 +19,26 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(Semaforo C CXX ASM)
+project(OneShotRGB C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-add_executable(Semaforo
-    Semaforo.c
+add_executable(OneShotRGB
+    OneShotRGB.c
 )
 
-pico_set_program_name(Semaforo "Semaforo")
-pico_set_program_version(Semaforo "0.1")
+pico_set_program_name(OneShotRGB "OneShotRGB")
+pico_set_program_version(OneShotRGB "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_usb(Semaforo 1)
-pico_enable_stdio_uart(Semaforo 0)
+pico_enable_stdio_usb(OneShotRGB 1)
+pico_enable_stdio_uart(OneShotRGB 0)
 
 
 # Add the standard library to the build
-target_link_libraries(Semaforo
+target_link_libraries(OneShotRGB
     pico_stdlib
     hardware_pio
     hardware_clocks
@@ -46,8 +46,8 @@ target_link_libraries(Semaforo
 )
 
 # Add the standard include files to the build
-target_include_directories(Semaforo PRIVATE
+target_include_directories(OneShotRGB PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
 )
 
-pico_add_extra_outputs(Semaforo)
+pico_add_extra_outputs(OneShotRGB)
